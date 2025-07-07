@@ -1,0 +1,17 @@
+<h2>Registrar Entrenamiento</h2>
+
+<form (ngSubmit)="saveWorkout()">
+  <label for="day">Día:</label>
+  <select [(ngModel)]="day" name="day" (change)="onDayChange()">
+    <option *ngFor="let d of days" [value]="d">{{ d }}</option>
+  </select>
+
+  <div *ngFor="let ex of exercises; let i = index">
+    <input [(ngModel)]="ex.name" name="name{{i}}" placeholder="Ejercicio" />
+    <input [(ngModel)]="ex.weight" name="weight{{i}}" type="number" placeholder="Peso (kg)" />
+    <input [(ngModel)]="ex.reps" name="reps{{i}}" type="number" placeholder="Repeticiones" />
+  </div>
+
+  <button type="button" (click)="addExercise()">Agregar ejercicio</button>
+  <button type="submit">Guardar</button>
+</form>
